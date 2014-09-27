@@ -1,0 +1,5 @@
+#!/bin/sh
+USER=`/usr/bin/id -unr`
+UID=`/usr/bin/id -ur`
+GID=`/usr/bin/id -gr`
+exec sudo /usr/local/bin/sftp-wrapper-2 $USER $UID $GID
