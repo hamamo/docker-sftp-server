@@ -1,5 +1,2 @@
 #!/bin/sh
-USER=${1:-999}
-UID=${2:-999}
-GID=${3:-999}
-exec /usr/bin/docker.io run -i --net none --rm -e USER=$USER -e UID=$UID -e GID=$GID -v "$HOME":/home/$USER -v /dev/log:/dev/log sftp-server
+exec /usr/bin/docker.io run -i --net none --rm -e USER="$1" -e UID="$2" -e GID="$3" -v "$HOME:/home/$1" -v /dev/log:/dev/log sftp-server

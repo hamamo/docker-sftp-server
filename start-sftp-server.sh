@@ -1,7 +1,9 @@
 #!/bin/sh
-USER=${USER:=nobody}
-UID=${UID:=999}
-GID=${GID:=999}
+if [ ! -n "$USER" -a -n "$UID" -a -n "$GID" ]
+then
+  echo environment variables USER, UID and GID must be set
+  exit 1
+fi
 groupadd -g $GID $USER
 useradd -d /home/$USER -u $UID -g $GID -s /bin/false $USER
 cd /home/$USER
